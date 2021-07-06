@@ -1,9 +1,12 @@
 #include <iostream>
-using namespace std;
-string statusText(int version)
+#include "backend.h"
+#include <string>
+
+/* using namespace std; */
+
+std::string statusText(int version)
 {
-	/* string statusText = "" ; */
-	string endline = "\n";
+	std::string endline = "\n";
 	switch (version)
 	{
 		case 0:
@@ -16,12 +19,13 @@ string statusText(int version)
 
 
 	}
-}
+};
+
 int main()
 {
-	cout << statusText(0);
-	/* cout << "Hello World, but this should" << endl; */
-	/* cout << "be an email client"; */
-	/* cout << endl; */
+	std::cout << statusText(0);
+	backend backend1;
+	std::vector<std::string> test = backend1.getTest();
+	std::cout << test[0];
 	return 0;
 }
