@@ -25,7 +25,8 @@ int main()
 {
 	std::cout << statusText(0);
 	backend backend1;
-	std::vector<std::string> test = backend1.getTest();
-	std::cout << test[0];
+	std::vector<std::string> test ;
+	test = backend1.getTest();
+	std::cout << test[0] << "\n";
 	return 0;
 }
