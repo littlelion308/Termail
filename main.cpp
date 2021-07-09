@@ -2,11 +2,11 @@
 #include "backend.h"
 #include <string>
 
-/* using namespace std; */
+using namespace std;
 
-std::string statusText(int version)
+string statusText(int version)
 {
-	std::string endline = "\n";
+	string endline = "\n";
 	switch (version)
 	{
 		case 0:
@@ -23,10 +23,8 @@ std::string statusText(int version)
 
 int main()
 {
-	std::cout << statusText(0);
-	backend backend1;
-	std::vector<std::string> test ;
-	test = backend1.getTest();
-	std::cout << test[0] << "\n";
+	cout << statusText(0);
+	backend backend1 {'s','c',"string"};
+	cout << backend1.getRun("curl wttr.in") << endl;
 	return 0;
 }
