@@ -24,7 +24,15 @@ string statusText(int version)
 int main()
 {
 	cout << statusText(0);
-	backend backend1 {'s','c',"string"};
-	cout << backend1.getRun("curl wttr.in") << endl;
+	cout << "Test per creation" << endl;
+	backend backend1('s','c',"--netrc-file ~./config/Termail/account", "");
+	/* cout << backend1.getRun("curl wttr.in") << endl; */
+	cout << "Test object initialized" << endl;
+	/* cout << backend1.getType() << endl; */
+	/* cout << backend1.getTool()  << endl; */
+	/* cout << backend1.getOptions()  << endl; */
+	backend1.getType();backend1.getTool();backend1.getOptions();
+	cout << "Test after output" << endl;
+	cout << backend1.getMail("INBOX") << endl;
 	return 0;
 }
