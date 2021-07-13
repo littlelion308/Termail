@@ -5,7 +5,7 @@ Termail : backend.o main.o
 	g++ main.o backend.o -o Termail
 main.o : main.cpp
 	g++ -c main.cpp
-backend.o : backend.h
+backend.o : backend.h backend.cpp
 	g++ -c backend.cpp
 clean:
 	rm -f Termail main.o backend.o
