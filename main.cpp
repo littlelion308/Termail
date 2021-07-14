@@ -25,7 +25,7 @@ int main()
 {
 	cout << statusText(0);
 	cout << "Test per creation" << endl;
-	backend backend1('s','c',"--netrc-file ~./config/Termail/account", "");
+	backend backend1('s','c',"--netrc-file ~./config/Termail/account", "imap-mail.outlook.com");
 	/* cout << backend1.getRun("curl wttr.in") << endl; */
 	cout << "Test object initialized" << endl;
 	/* cout << backend1.getType() << endl; */

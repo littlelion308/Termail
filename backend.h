@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <curl/curl.h>
 
 #ifndef backend_H
 #define backend_H
@@ -10,13 +11,13 @@ class backend{
 		char tool; // i.e. c for curl, m for msmtp and potentially others
 		std::string options; // additional options to the commands, authentification
 		std::string server;
+		CURL *curl;
+		CURLcode res;
 	public:
 		// constructor
 		backend(char type_input, char tool_input,
 				std::string options_input,
-				std::string server_input ) :
-				type(type_input), tool(tool_input),
-				options(options_input),server(server_input) {};
+				std::string server_input ) ;
 		// to be moved into the private section, when no longer used externally
 		std::string getRun(std::string comand);
 		// Test
