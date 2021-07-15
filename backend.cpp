@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <curl/curl.h>
+#include <stdio.h>
 
 using namespace std;
 
@@ -12,13 +13,16 @@ backend::backend(char type_input, char tool_input, string options_input, string 
 	tool = tool_input;
 	options = options_input;
 	server = server_input;
+	CURL *curl;
 	CURLcode res = CURLE_OK;
-	while (!curl)
-	{
 	curl = curl_easy_init();
+	if (curl)
+	{
+		curl_easy_setopt(curl, CURLOPT_NETRC_FILE, "~./.config/Termail/netrc");
+		curl_easy_setopt(curl, CURLOPT_USE_SSL, "CURLUSESSL_TRY");
+
+		curl_easy_setopt(curl, CURLOPT_URL, "imap://imap-mail.outlook.com");
 	}
-	curl_easy_setopt(curl, CURLOPT_NETRC_FILE, "~./.config/Termail/netrc");
-	curl_easy_setopt(curl, CURLOPT_USE_SSL, "CURLUSESSL_TRY");
 
 };
 string backend::getRun(string command)
@@ -62,10 +66,30 @@ string backend::getOptions()
 }
 string backend::getMail(string mailbox)
 {
-	curl_easy_setopt(curl, CURLOPT_URL, server);
-	res = curl_easy_perform(curl);
+	cout << "function initialysed" << endl;
+	/* curl_easy_setopt(curl, CURLOPT_URL, "imap://imap-mail.outlook.com"); */
+	cout << "Curl opt set" << endl;
+	curl = curl_easy_init();
+	if (curl)
+	{
+		curl_easy_setopt(curl, CURLOPT_NETRC_FILE, "~./.config/Termail/netrc");
+		curl_easy_setopt(curl, CURLOPT_USE_SSL, "CURLUSESSL_TRY");
+		curl_easy_setopt(curl, CURLOPT_URL, "");
+
+
+		cout << "Curl == true" << endl;
+		/* curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "EXAMINE INBOX"); */
+		cout << "All curl opts set" << endl;
+		res = curl_easy_perform(curl);
+		cout << "Curl performed" << endl;
+	}
+	cout << "Curl performed" << endl;
 	const char *curl_easy_strerror(CURLcode errornum);
 
+
+	if(res != CURLE_OK)
+		fprintf(stderr, "curl_easy_perform() failed: %s\n",
+				curl_easy_strerror(res));
 
 
 
