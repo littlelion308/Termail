@@ -31,8 +31,11 @@ int main()
 	/* cout << backend1.getType() << endl; */
 	/* cout << backend1.getTool()  << endl; */
 	/* cout << backend1.getOptions()  << endl; */
-	backend1.getType();backend1.getTool();backend1.getOptions();
+	backend1.getType();
+	backend1.getTool();
+	backend1.getOptions();
 	cout << "Test after output" << endl;
-	cout << backend1.getMail("INBOX") << endl;
+	/* cout << backend1.getMail("INBOX") << endl; */
+	backend1.getMail("");
 	return 0;
 }

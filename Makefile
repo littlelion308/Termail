@@ -8,6 +8,6 @@ main.o : main.cpp
 backend.o : backend.h backend.cpp
 	g++ -c -lcurl backend.cpp
 clean:
-	rm -f Termail main.o backend.o
+	rm -f Termail main.o backend.o README.md.pdf
 run: Termail
 	./Termail
